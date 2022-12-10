@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}  تایید کد{% endblock %}
 
 {% block content %}
-<form action="" method="post">
+<head>
+	<meta charset="utf-8">
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'accounts/css/nunito-font.css' %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'accounts/css/accountstyle.css' %}"/>
+</head>
+<div class="page-content">
+    <div class="form-v9-content">
+<h3 class="text-center">لطفا کد را وارد نمایید</h3>
+<form  class="form-detail" action="" method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="ارسال ">
 
 </form>
+</div>
+</div>
 
 {% endblock %}

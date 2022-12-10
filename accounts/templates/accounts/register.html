@@ -1,11 +1,54 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %} ثبت نام{% endblock %}
+
+{% block navbar %}
+
+{% endblock %}
+
 
 {% block content %}
-<form action="" method="post" novalidate >
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="ثبت نام ">
 
-</form>
+
+<head>
+	<meta charset="utf-8">
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'accounts/css/nunito-font.css' %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'accounts/css/accountstyle.css' %}"/>
+</head>
+	<div class="page-content">
+		<div class="form-v9-content" >
+			<div class="form-row-total ">
+             <form class="form-detail"  method="post" novalidate>
+             {% csrf_token %}
+             <div class="form-row-total">
+                <div class="">
+             
+				<h2 style="margin-top:-140px ;">فرم ثبت نام</h2>
+				{{form}}
+            </div>
+        </div>
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="ثبت نام">
+				</div>
+
+            </form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}
