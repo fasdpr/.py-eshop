@@ -20,11 +20,29 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
-<!--
-    
+
+    <style>
+    .ul-1 {
+        display: inline-block;
+        font-size:omgHuge;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        color: black;
+
+    }
+    .li-1{
+        text-align: center;
+        margin-right: 30px;
+        margin-left: 30px;
+        font-size:x-large; 
+        float: left;
+    }
+    </style>
 
 
--->
+
 </head>
 <body>
     {% include 'inc/messages.html' %}
@@ -54,10 +72,7 @@
     <!-- End Categories of The Month -->
 
 
-    <!-- Start Featured Product -->
-    {% block Products %}
-    {% endblock %}
-    <!-- End Featured Product -->
+
 
    
     {% block content %}
@@ -65,6 +80,8 @@
 
     <!-- Start Footer -->
     {% block footer %}
+{% include 'inc/footer.html' %}
+
     {% endblock %}
 
     <!-- End Footer -->

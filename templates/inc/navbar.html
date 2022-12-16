@@ -3,9 +3,9 @@
         <div class="w-100 d-flex justify-content-between">
             <div>
                 <i class="fa fa-envelope mx-2"></i>
-                <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">Bitastoretop@bitaco.com</a>
                 <i class="fa fa-phone mx-2"></i>
-                <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">021-443330000</a>
             </div>
             <div>
                 <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -46,11 +46,14 @@
             </div>
             <div class="text-center">
                 <div class=" flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                    <form role="search" method="get" class="search-box" action="{% url 'home:search' %}" >
+
                     <div class="input-group">
-                        <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                        <input type="text" class="form-control" id="inputMobileSearch"  name="searchboxx" placeholder="جستجو ...">
                         <div class="input-group-text">
-                            <i class="fa fa-fw fa-search"></i>
+                            <button ><i class="fa fa-fw fa-search"></i></button>
                         </div>
+                    </form>
                     </div>
                 </div>
                 <ul style="list-style: none;">
@@ -60,9 +63,10 @@
                 {% if request.user.is_authenticated %}
               
                 <li style="display: inline;">
-                    <a class="nav-icon position-relative text-decoration-none" href="">
+                    <a class="nav-icon position-relative text-decoration-none" href="{% url 'shop:cart' %}">
                        
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{cart_key|length}}</span>
                     </a>
                 </li>
             

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'inc/navbar.html' %}
+
+<table class="table  table-hover table-bordered border-primary">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col">شماره</th>
+        <th class="text-center" scope="col">نام</th>
+        <th class="text-center" scope="col">تعداد</th>
+        <th class="text-center" scope="col">هزینه </th>
+        <th class="text-center" scope="col">هزینه نهایی</th>
+        <th class="text-center" scope="col"> حذف</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in cart %}
+      <tr>
+        <th class="text-center" scope="row">{{forloop.counter}}</th>
+        <td class="text-center">{{item.product}}</td>
+        <td class="text-center">{{item.quantity}}</td>
+        <td class="text-center">{{item.price}}</td>
+        <td class="text-center">{{item.total_price}}</td>
+        <td class="text-center"><a class='btn btn-danger' href="{% url 'shop:cart_remove' item.product.id %}">حذف</a></td>
+
+      </tr>
+
+   {% endfor %}
+   <tr>
+    <th class="text-center" scope="row">هزینه نهایی </th>
+    <td class="text-center">{{cart.get_total_price}}</td>
+
+  </tr>
+     
+    </tbody>
+  </table>
+  <a class='btn btn-primary' href="{% url 'shop:create_order' %}">ثبت</a>
+
+  {% include 'inc/footer.html' %}
+{% endblock %}

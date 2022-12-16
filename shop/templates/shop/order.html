@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'inc/navbar.html' %}
+<h3>مبلغ نهایی</h3>
+
+<p> {{order.get_total_price}}</p>
+<a class="btn btn-primary " href="{% url 'shop:order_pay' order.id  %}">
+    پرداخت
+</a>
+
+{% endblock %}

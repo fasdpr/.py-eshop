@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/shopcss.css' %}">
+
+
+
+{% block content %}
+
+
+{% include 'inc/navbar.html' %}
+
+
+{% for product in products %}
+</br>
+</br>
+
+<div class="container">
+
+    <div class="col-xs-12 col-md-10">
+
+                    <!-- First product box start here-->
+                    <div class="prod-info-main prod-wrap clearfix">
+    
+    <div class="row">
+    
+                               <div class="col-md-5 col-sm-8 col-xs-12">
+    
+    <div class="product-image">
+    
+                                 <img src="{{product.image.url}}" class="img-responsive">
+    
+                                   <span class="tag2 hot">
+    
+                                   </span>
+    
+                           </div>
+    
+                      </div>
+    
+         <div class="col-md-7 col-sm-12 col-xs-12">
+    
+                      <div class="product-deatil">
+    
+                                   <h5 class="name">
+    
+    
+        <a href="{{ product.get_absolute_url }}" class="card-title">{{product.name}}</a>    
+    
+                                   
+    
+                                 
+    
+                            </h5>
+    
+                                <p class="price-container">
+                                    <div>   <div>{{product.price}}</div>
+                                    <span>ریال</span>
+                                </div>
+                                    
+
+    
+                               </p>
+    
+                  <span class="tag1"></span>
+    
+       </div>
+    
+       <div class="description">
+    
+          <p>{{product.description}} </p>
+    
+       </div>
+    
+          <div class="product-info smart-form">
+    
+             <div class="row"
+    
+        <div class="col-md-12">
+    <div>
+              <a href="{% url 'shop:product_detail' product.slug  %}" class=" btn btn-danger">اضافه به سبد خرید</a>
+    
+                 <a href="javascript:void(0);" class="btn btn-info">اطلاعات بیشتر</a>
+                </div>
+           </div>
+    
+          <div class="col-md-12">
+    
+             <div class="rating">امتیاز دهی:
+    
+              <label for="stars-rating-5"><i class="fa fa-star text-danger"></i></label>
+    
+              <label for="stars-rating-4"><i class="fa fa-star text-danger"></i></label>
+    
+              <label for="stars-rating-3"><i class="fa fa-star text-danger"></i></label>
+    
+              <label for="stars-rating-2"><i class="fa fa-star text-warning"></i></label>
+    
+              <label for="stars-rating-1"><i class="fa fa-star text-warning"></i></label>
+    
+             </div>
+    
+           </div>
+           <br>
+           <hr>
+    
+        </div>
+    
+       </div>
+    
+      </div>
+    
+    </div>
+     </div>
+    
+     <!-- end product -->
+    
+    </div>
+    </div>
+    
+    </div>
+
+
+
+  
+{% endfor %}
+
+
+{% if products.has_other_pages %}
+    <div style="text-align: center;">
+<ul class="ul-1">
+
+  {% if products.has_previous %}
+
+<li class="li-1"><a href="?page={{ products.previous_page_number }}" >&laquo;</a></li>
+
+  {% else %}
+    <li class="li-1"><span>&laquo;</span></li>
+  {% endif %}
+
+
+  {% for i in products.paginator.page_range %}
+    {% if products.number == i %}
+      <li class="li-1"><span>{{ i }} <span class="sr-only"></span></span></li>
+    {% else %}
+      <li class="li-1"><a href="?page={{ i }}" >{{ i }}</a></li>
+    {% endif %}
+  {% endfor %}
+
+  {% if products.has_next %}
+    <li class="li-1"><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+  {% else %}
+    <li class="li-1"><span>&raquo;</span></li>
+  {% endif %}
+</ul>
+</div>
+<br>
+<br>
+
+{% endif %}
+
+  {% endblock %}
